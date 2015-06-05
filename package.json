@@ -1,0 +1,28 @@
+{
+  "name": "stream-branch",
+  "version": "0.1.0",
+  "description": "Node Stream branching tool",
+  "author": {
+    "name": "Sergey Kamardin",
+    "email": "gobwas@gmail.com",
+    "url": "https://github.com/gobwas"
+  },
+  "repository": "gobwas/stream-branch",
+  "license": "MIT",
+  "keywords": [
+    "stream-branch",
+    "node",
+    "stream",
+    "branch",
+    "fork"
+  ],
+  "dependencies": {
+    "async": "^1.2.0",
+    "inherits-js": "^0.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha ./test"
+  },
+  "main": "./index.js"
+}
