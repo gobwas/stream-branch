@@ -1,7 +1,7 @@
 var Branch = require("./lib/branch"),
-    debug = util.debuglog('stream-branch');
+    debug = require("util").debuglog('stream-branch');
 
-module.exports = function(streams, options) {
+module.exports = function(options, streams) {
     var branch;
 
     if (Array.isArray(options)) {
