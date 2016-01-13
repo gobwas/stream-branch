@@ -1,6 +1,49 @@
 #  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 
-> Node Stream branching tool
+> Node Stream multiplexing tool
+
+## Whatsup
+
+This is a simple stream wrapper, that allows you to do the same things as [multistream](https://github.com/feross/multistream) and others, but with ability to write in combined stream:
+
+```
+          source
+            |   
+        transform
+            |
+           / \
+          /   \
+         /     \
+transfrom1 ... transformN
+         \     /
+          \   /
+           \ /
+            |
+        transform
+            |
+          result
+```
+
+## Example
+
+```js
+var branch = require("stream-branch");
+
+// for example, browserify.bundle()
+getSomeReadableStream()
+	.pipe(makeCommonThings())
+	.pipe(branch({ objectMode: true },
+	    [
+	    	// here list of transform streams
+	        makeSomeTask(),
+	        makeAnotherTask()
+	    ]
+	))
+	.pipe(gulp.dest("./dist"))
+	.pipe(uglify())
+	.pipe(rename({ extname: ".min.js" }))
+	.pipe(gulp.dest("./dist"));
+```
 
 
 ## Install
@@ -9,19 +52,9 @@
 $ npm install --save stream-branch
 ```
 
-
-## Usage
-
-```js
-var streamBranch = require('stream-branch');
-
-streamBranch('Rainbow');
-```
-
-
 ## API
 
-### streamBranch.<method>(param: Type) : Result
+### streamBranch(param: List[Stream]) : stream.Duplex
 
 
 ## License
