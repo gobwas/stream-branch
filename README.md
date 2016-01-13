@@ -1,4 +1,4 @@
-#  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+#  [![NPM version][npm-image]][npm-url]
 
 > Node Stream multiplexing tool
 
@@ -7,7 +7,7 @@
 This is a simple stream wrapper, that allows you to do the same things as [multistream](https://github.com/feross/multistream) and others, but with ability to write in combined stream:
 
 ```
-          source
+         source
             |   
         transform
             |
@@ -45,6 +45,16 @@ getSomeReadableStream()
 	.pipe(gulp.dest("./dist"));
 ```
 
+Or
+
+```js
+branch([
+	fs.CreateReadableStream("a.txt"),
+	fs.CreateReadableStream("b.txt"),
+])
+.pipe(someTask);
+```
+
 
 ## Install
 
@@ -54,7 +64,7 @@ $ npm install --save stream-branch
 
 ## API
 
-### streamBranch(param: List[Stream]) : stream.Duplex
+### streamBranch([options: Object, ]param: List[Stream]) : stream.Duplex
 
 
 ## License
